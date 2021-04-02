@@ -7,13 +7,30 @@ import "./styles/root.scss";
 //const alert=useAlert()
 
 function App(){
- 
+  function isdraw(board,winner){
+    var count=0;
+    board.forEach(element => {
+      if(element==null){
+        count+=1;
+      }
+    });
+    if(count==0 && winner==null){
+      return true;
+    }
+    else{
+      return false;
+    }
+    
+    }
   const [board,setBoard]=useState(Array(9).fill(null));
   const [isXnext,setisXnext]=useState(false);
   const [player_id,set_player_id]=useState('O');
  
   const {winner,winningsquares}=calculateWinner(board);
- const message=winner?("Player "+winner+" won the match"): (isXnext? ("Player X's turn"):("Player O's turn"));
+ var message=(winner?("Player "+winner+" won the match"): (isXnext? ("Player X's turn"):("Player O's turn")));
+ if(isdraw(board,winner)){
+   message="DRAW MATCH";
+ }
  function new_game(){
    setBoard(
      Array(9).fill(null)
