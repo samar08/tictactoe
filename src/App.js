@@ -12,7 +12,7 @@ function App(){
   const [isXnext,setisXnext]=useState(false);
   const [player_id,set_player_id]=useState('O');
  
-  const winner=calculateWinner(board);
+  const {winner,winningsquares}=calculateWinner(board);
  const message=winner?("Player "+winner+" won the match"): (isXnext? ("Player X's turn"):("Player O's turn"));
  function new_game(){
    setBoard(
@@ -64,7 +64,7 @@ function App(){
     <h2>{message}</h2>
     
   
-    <Board board={board} handleSquareClick={handleSquareClick}/>
+    <Board board={board} handleSquareClick={handleSquareClick} winningsquares={winningsquares}/>
    <button className="newgame" onClick={new_game}>Start New Game</button>
     <Foot className="footer"/>
     </div>
