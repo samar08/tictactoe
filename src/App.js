@@ -78,12 +78,17 @@ function App(){
   
   <div className="app">
     <h1>TIC TAC TOE</h1>
-    <h2>{message}</h2>
+    <h2 className={winner?((winner==='X')?'text-green':'text-orange'):('text-yellow')} >
+      
+      {message}
+      
+      </h2>
     
   
     <Board board={board} handleSquareClick={handleSquareClick} winningsquares={winningsquares}/>
-   <button className="newgame" onClick={new_game}>Start New Game</button>
+   <button className={`btn-reset ${winner?'active':''}`} onClick={new_game}>Start New Game</button>
     <Foot className="footer"/>
+    <div className="bg-balls"/>
     </div>
    
   );
