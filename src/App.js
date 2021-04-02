@@ -7,6 +7,7 @@ import "./styles/root.scss";
 //const alert=useAlert()
 
 function App(){
+  var draw=false;
   function isdraw(board,winner){
     var count=0;
     board.forEach(element => {
@@ -15,6 +16,7 @@ function App(){
       }
     });
     if(count==0 && winner==null){
+      draw=true;
       return true;
     }
     else{
@@ -36,7 +38,7 @@ function App(){
      Array(9).fill(null)
    );
    setisXnext(false);
-   
+   draw=false;
    
  }
  console.log(board,setisXnext);
@@ -86,7 +88,7 @@ function App(){
     
   
     <Board board={board} handleSquareClick={handleSquareClick} winningsquares={winningsquares}/>
-   <button className={`btn-reset ${winner?'active':''}`} onClick={new_game}>Start New Game</button>
+   <button className={`btn-reset ${winner?'active':draw?'active':''}`} onClick={new_game}>Start New Game</button>
     <Foot className="footer"/>
     <div className="bg-balls"/>
     </div>
